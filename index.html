@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#11152B">
+    <meta name="description" content="Uma viagem pelo tempo através de desafios e conhecimentos históricos.">
+    <title>História em Jogo | Uma Viagem pelo Tempo</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header class="topbar">
+        <a href="#" class="brand">
+            <span class="brand-icon">🏛️</span>
+            <span>HISTÓRIA EM JOGO</span>
+        </a>
+        <span class="header-subtitle">UMA VIAGEM PELO TEMPO</span>
+    </header>
+
+    <main class="container">
+
+        <section id="start-screen" class="screen active">
+
+            <div class="hero">
+                <span class="eyebrow">DESAFIO DE HISTÓRIA GERAL</span>
+
+                <div class="hero-symbol">🏺</div>
+
+                <h1>HISTÓRIA <span>EM JOGO!</span></h1>
+
+                <h2>Você conhece o passado?</h2>
+
+                <p class="hero-description">
+                    Prepare-se para uma viagem pela história da humanidade.
+                    Explore civilizações, conheça grandes acontecimentos
+                    e prove que você domina o passado!
+                </p>
+
+                <div class="game-info">
+                    <div class="info-item">
+                        <span>📜</span>
+                        <strong>12 perguntas</strong>
+                    </div>
+
+                    <div class="info-item">
+                        <span>🏆</span>
+                        <strong>3 níveis</strong>
+                    </div>
+
+                    <div class="info-item">
+                        <span>⭐</span>
+                        <strong>120 pontos</strong>
+                    </div>
+                </div>
+
+                <div class="instructions">
+                    <h3>⚔️ Como jogar?</h3>
+
+                    <p>01. Responda às perguntas de História Geral.</p>
+                    <p>02. Cada resposta correta vale 10 pontos.</p>
+                    <p>03. Acerte pelo menos 3 questões para avançar.</p>
+                    <p>04. Conquiste selos e desbloqueie novos períodos.</p>
+                    <p>05. Complete a jornada e conquiste o troféu final!</p>
+                </div>
+
+                <button id="start-button" class="primary-button">
+                    <span>⚔️</span>
+                    INICIAR JORNADA
+                </button>
+
+                <p class="hero-footer">
+                    O conhecimento é a maior herança da humanidade.
+                </p>
+            </div>
+
+        </section>
+
+        <section id="game-screen" class="screen">
+
+            <div class="game-header">
+                <div class="level-information">
+                    <span id="level-number">NÍVEL 01</span>
+                    <h2 id="level-name">Explorador do Passado</h2>
+                </div>
+
+            <div class="timer-container">
+                <div class="timer">
+                    <span>⏱</span>
+                    <span id="timer">00:30</span>
+               </div>
+            </div>
+
+                <div class="score-box">
+                    <span>⭐ PONTUAÇÃO</span>
+                    <strong id="score">0</strong>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-information">
+                    <span id="question-counter">Questão 1 de 4</span>
+                    <span id="progress-percentage">0%</span>
+                </div>
+
+                <div class="progress-track">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+            </div>
+
+            <div class="game-layout">
+
+                <div class="question-area">
+
+                    <div class="question-card">
+                        <span class="question-category">📜 DESAFIO HISTÓRICO</span>
+
+                        <h2 id="question-text">
+                            Carregando questão...
+                        </h2>
+
+                        <div id="answers-container" class="answers-grid"></div>
+
+                        <div id="feedback" class="feedback" aria-live="polite" hidden>
+                            <h3 id="feedback-title"></h3>
+                            <p id="feedback-text"></p>
+                        </div>
+
+                        <button class="logo-button" onclick="reiniciarJogo()">
+                             História em Jogo
+                        </button>
+                        
+                        <button id="next-button" class="primary-button next-button" hidden>
+                            PRÓXIMA QUESTÃO →
+                        </button>
+                    </div>
+
+                </div>
+
+                <aside class="achievements-panel">
+
+                    <h3>🏆 CONQUISTAS</h3>
+
+                    <p class="achievements-description">
+                        Suas glórias durante esta jornada.
+                    </p>
+
+                    <div id="achievements-list" class="achievements-list">
+
+                        <div class="achievement locked" data-achievement="1">
+                            <span class="achievement-icon">🏺</span>
+                            <div>
+                                <strong>Explorador do Passado</strong>
+                                <small>Nível básico</small>
+                            </div>
+                        </div>
+
+                        <div class="achievement locked" data-achievement="2">
+                            <span class="achievement-icon">🏛️</span>
+                            <div>
+                                <strong>Mestre da História</strong>
+                                <small>Nível intermediário</small>
+                            </div>
+                        </div>
+
+                        <div class="achievement locked" data-achievement="3">
+                            <span class="achievement-icon">🏆</span>
+                            <div>
+                                <strong>Lenda Histórica</strong>
+                                <small>Nível avançado</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="journey-note">
+                        <span>📖</span>
+                        <p>
+                            Cada resposta é uma descoberta.
+                            Cada conquista é um capítulo da sua história.
+                        </p>
+                    </div>
+
+                </aside>
+
+            </div>
+
+            <section id="level-summary" class="level-summary" hidden>
+                <div class="summary-icon" id="summary-icon">🏺</div>
+
+                <span class="eyebrow">RESULTADO DA EXPEDIÇÃO</span>
+
+                <h2 id="summary-title">Etapa concluída!</h2>
+
+                <p id="summary-message"></p>
+
+                <div class="summary-score">
+                    <span>ACERTOS</span>
+                    <strong id="summary-correct">0/4</strong>
+                </div>
+
+                <button id="retry-button" class="primary-button" hidden>
+                    🔄 TENTAR NOVAMENTE
+                </button>
+
+                <button id="continue-button" class="primary-button" hidden>
+                    AVANÇAR NA HISTÓRIA →
+                </button>
+            </section>
+
+        </section>
+
+        <section id="result-screen" class="screen">
+
+            <div class="result-card">
+
+                <span class="eyebrow">FIM DA JORNADA HISTÓRICA</span>
+
+                <div class="final-trophy">🏆</div>
+
+                <h1>LENDA <span>HISTÓRICA!</span></h1>
+
+                <h2>Você concluiu sua viagem pelo tempo!</h2>
+
+                <p class="result-description">
+                    Sua dedicação ao conhecimento escreveu mais um
+                    capítulo na grande história da humanidade.
+                </p>
+
+                <div class="final-score-box">
+                    <span>PONTUAÇÃO FINAL</span>
+                    <strong id="final-score">0</strong>
+                    <small>DE 120 PONTOS</small>
+                </div>
+
+                <div class="final-achievements">
+                    <h3>SUAS CONQUISTAS</h3>
+                    <div id="final-achievements-list"></div>
+                </div>
+
+                <div id="final-message" class="final-message"></div>
+
+                <button id="restart-button" class="primary-button">
+                    🔄 JOGAR NOVAMENTE
+                </button>
+
+                <p class="hero-footer">
+                    A história nunca termina para quem continua aprendendo.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>HISTÓRIA EM JOGO © 2026</p>
+        <span>Conhecer o passado é compreender o presente.</span>
+    </footer>
+
+</body>
+</html>
